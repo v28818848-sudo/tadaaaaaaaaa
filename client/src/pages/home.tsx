@@ -4,7 +4,6 @@ import AboutSection from "@/components/about-section";
 import ProblemSection from "@/components/problem-section";
 import MethodologySection from "@/components/methodology-section";
 import KeyIndicators from "@/components/key-indicators";
-import RealTimeIndicator from "@/components/real-time-indicator";
 import ResultsSection from "@/components/results-section";
 import ImpactSection from "@/components/impact-section";
 import FutureSection from "@/components/future-section";
@@ -19,7 +18,6 @@ export default function Home() {
       <ProblemSection />
       <MethodologySection />
       <KeyIndicators />
-      <RealTimeIndicator />
       <ResultsSection />
       <ImpactSection />
       <FutureSection />

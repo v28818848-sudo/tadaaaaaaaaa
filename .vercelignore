@@ -8,3 +8,8 @@ temp
 *.log
 .DS_Store
 Thumbs.db
+server
+analyze_traffic.py
+pyproject.toml
+uv.lock
+public/data

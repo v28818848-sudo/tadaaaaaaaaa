@@ -44,13 +44,10 @@ export function useUploadCSV() {
       const formData = new FormData();
       formData.append('csvFile', file);
       
-      // Use custom fetch for FormData (apiRequest doesn't support multipart/form-data)
-      // but maintain consistency with credentials and error handling
       const response = await fetch('/api/upload-csv', {
         method: 'POST',
         body: formData,
-        credentials: 'include', // Match apiRequest behavior
-        // Note: Don't set Content-Type header - browser will set it with boundary for FormData
+        credentials: 'include',
       });
       
       if (!response.ok) {
@@ -61,14 +58,12 @@ export function useUploadCSV() {
     },
     onSuccess: (data) => {
       console.log("CSV uploaded successfully:", data);
-      // Immediately invalidate and refetch all related data since server has completed processing
       queryClient.invalidateQueries({ queryKey: ["/api/indicators"] });
       queryClient.invalidateQueries({ queryKey: ["/api/traffic-data"] });
       queryClient.invalidateQueries({ queryKey: ["/api/charts"] });
     },
     onError: (error) => {
       console.error("CSV upload failed:", error);
-      // Force refresh of indicators to show updated error state
       queryClient.invalidateQueries({ queryKey: ["/api/indicators"] });
     },
   });
